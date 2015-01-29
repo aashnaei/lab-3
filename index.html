@@ -14,8 +14,9 @@
 		<script src="src/script.js"></script>
 		
 		<div id="content"></div>
+		<div id="mount-point"></div>
 
-		<script type="text/jsx">
+		<script type="text/jsx" src="src/script.js">
 		/*** @jsx React.DOM */
 
 		var data = [
@@ -24,28 +25,28 @@
 		]
 
 		var PersonApp = React.createClass({
-			render:function(){
+			render: function(){
 				return (
-					<div>
+					
 						<h1>this is the PersonApp</h1>
 						<PersonList data={this.props.data} />
-					</div>
-					)
+					
+					);
 			}
 		});
 
 		var Person = React.createClass({
-			render:function(){
+			render: function(){
 				return (
-					<div>
+					
 					<h2>{this.props.last}, {this.props.first}</h2>
-					</div>
-					)
+					
+					);
 			}
-		})
+		});
 
 		var PersonList = React.createClass({
-			render:function(){
+			render: function(){
 				var people = this.props.data.map(function(person){
 					return <person first={person.first} last={person.last} />
 				});
@@ -53,9 +54,9 @@
 					<div>
 					{people}
 					</div>
-					)
+					);
 			}
-		})
+		});
 
 		React.renderComponent(<PersonApp data={data} />, document.getElementById('content'))
 
