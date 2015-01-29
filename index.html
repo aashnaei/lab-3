@@ -1,0 +1,66 @@
+<doctype html>
+
+<html lang='en'>
+	<head>
+		<meta charset='utf-8'>
+		<title>Lab 3</title>
+		
+
+	</head>
+	<body>
+		<script src="http://fb.me/react-0.12.2.js"></script>
+		<script src="http://fb.me/JSXTransformer-0.12.2.js"></script>
+		<script src="http://code.jquery.com/jquery-1.10.0.min.js"></script>
+		<script src="src/script.js"></script>
+		
+		<div id="content"></div>
+
+		<script type="text/jsx">
+		/*** @jsx React.DOM */
+
+		var data = [
+			{first:'Bruce' last:'Wayne'},
+			{first:'Peter' last:'Parker'}
+		]
+
+		var PersonApp = React.createClass({
+			render:function(){
+				return (
+					<div>
+						<h1>this is the PersonApp</h1>
+						<PersonList data={this.props.data} />
+					</div>
+					)
+			}
+		});
+
+		var Person = React.createClass({
+			render:function(){
+				return (
+					<div>
+					<h2>{this.props.last}, {this.props.first}</h2>
+					</div>
+					)
+			}
+		})
+
+		var PersonList = React.createClass({
+			render:function(){
+				var people = this.props.data.map(function(person){
+					return <person first={person.first} last={person.last} />
+				});
+				return (
+					<div>
+					{people}
+					</div>
+					)
+			}
+		})
+
+		React.renderComponent(<PersonApp data={data} />, document.getElementById('content'))
+
+		</script>
+		
+
+	</body>
+</html>
